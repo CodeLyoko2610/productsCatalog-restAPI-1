@@ -1,0 +1,11 @@
+{
+  "name": "productscatalog-restapi-1",
+  "version": "1.0.0",
+  "description": "An application to mangage products - adCash pre assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dang Chuong Pham",
+  "license": "MIT"
+}
