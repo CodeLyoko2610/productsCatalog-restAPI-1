@@ -7,6 +7,11 @@
  //Connect DB
  connectDB();
 
+ //Initialize middleware
+ app.use(express.json({
+     extended: false
+ }))
+
  //Test endpoint
  app.get('/', (req, res) => res.send('[server] API is running.'))
  //Routes
