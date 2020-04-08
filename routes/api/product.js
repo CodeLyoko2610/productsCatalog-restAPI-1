@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 router.post(
     '/',
     [
-        check('name', 'Name is required').not().isEmpty(),
+        check('prodName', 'Name is required').not().isEmpty(),
         check('category', 'Category is  required').not().isEmpty(),
     ],
     async (req, res) => {
@@ -33,15 +33,15 @@ router.post(
         }
 
         const {
-            name,
+            prodName,
             category,
-            description
+            prodDescription
         } = req.body;
 
         try {
             //See if product already exists
             let product = await Product.findOne({
-                name
+                prodName
             });
 
             //Return error if exists
@@ -57,9 +57,9 @@ router.post(
 
             //Create new product if not
             let newProduct = new Product({
-                name,
+                prodName,
                 category,
-                description,
+                prodDescription,
             });
 
             await newProduct.save();
@@ -79,7 +79,7 @@ router.get('/:productId', async (req, res) => {
             .findOne({
                 _id: req.params.productId
             })
-            .populate('Category', ['name', 'description']);
+        // .populate('Category', ['name', 'description']);
 
         if (!product) {
             return res.status(400).send('Product not found.');
