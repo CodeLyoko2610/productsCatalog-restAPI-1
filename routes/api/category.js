@@ -56,7 +56,7 @@ router.post('/', [
         res.send('New category created. ' + newCategory);
     } catch (error) {
         res.status(500).send('Server error.');
-        console.error(error.message);
+        console.error('[category.js] ' + error.message);
     }
 })
 

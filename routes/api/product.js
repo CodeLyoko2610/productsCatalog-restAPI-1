@@ -10,7 +10,7 @@ const Product = require('../../models/Product');
 const router = express.Router();
 
 //@route    GET api/product
-//@desc     Check 1 product
+//@desc     Check all product
 router.get('/', (req, res) => {
     res.send('Product route.');
 });
@@ -21,7 +21,7 @@ router.post(
     '/',
     [
         check('name', 'Name is required').not().isEmpty(),
-        check('category', 'Category is required').not().isEmpty(),
+        check('category', 'Category is  required').not().isEmpty(),
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -70,5 +70,26 @@ router.post(
         }
     }
 );
+
+//@route    GET api/product/:productId
+//@desc     Check 1 product
+router.get('/:productId', async (req, res) => {
+    try {
+        let product = await Product
+            .findOne({
+                _id: req.params.productId
+            })
+            .populate('Category', ['name', 'description']);
+
+        if (!product) {
+            return res.status(400).send('Product not found.');
+        }
+
+        res.json(product);
+    } catch (error) {
+        res.status(500).send('Server error.');
+        console.error('[product.js] ' + error.message);
+    }
+});
 
 module.exports = router;
