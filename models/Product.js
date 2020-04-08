@@ -11,7 +11,7 @@ const ProductSchema = new mongoose.Schema({
     },
     category: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'category'
+        ref: 'Category'
     },
     date: {
         type: Date,

@@ -8,7 +8,7 @@ const Category = require('../../models/Category');
 const router = express.Router();
 
 //@route    GET api/category
-//@desc     Check 1 category
+//@desc     Check all categories
 router.get('/', (req, res) => {
     res.send('Category route.');
 })
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 //@route    POST api/category
 //@desc     Create new category
 router.post('/', [
-    check('name', 'Name is required.').not().isEmpty(),
+    check('cateName', 'Name is required.').not().isEmpty(),
 ], async (req, res) => {
     const errors = validationResult(req);
 
@@ -27,14 +27,14 @@ router.post('/', [
     }
 
     const {
-        name,
-        description
+        cateName,
+        cateDescription
     } = req.body;
 
     try {
         //Check if category already exists
         let category = await Category.findOne({
-            name
+            cateName
         });
 
         //If exists, return error
@@ -48,8 +48,8 @@ router.post('/', [
 
         //If not, create new category
         let newCategory = new Category({
-            name,
-            description
+            cateName,
+            cateDescription
         })
 
         await newCategory.save();
