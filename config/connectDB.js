@@ -7,7 +7,8 @@ const connectDB = async () => {
         //Returns a promise, wait for the promise to resolve
         await mongoose.connect(db, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useCreateIndex: true
         });
 
         //After resolving, print out the log
