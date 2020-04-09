@@ -25,6 +25,7 @@ Below are some example queries.
 ### Create a category
 
 _POST request_
+
 `http://localhost:6000/api/category`
 
 _Request header_
@@ -35,14 +36,19 @@ _Request header_
 
 _Request body_
 
-```{
+````
+{
 	"cateName":"Cate1",
 	"cateDescription":"Test Category 1"
-}```
-```
+}
+````
 
 ### Search for a product with productId
 
 _GET request_
 
 `http://localhost:6000/api/product/5e8ef1a85a906b4643bfdd08`
+
+## Having concerns ?
+Please do not hesitate to contact me through [dangchuongpham1999@gmail.com](mailto:dangchuongpham1999@gmail.com).
+I would love to hear your comments!
