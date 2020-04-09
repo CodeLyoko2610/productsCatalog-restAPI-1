@@ -1,22 +1,23 @@
 const mongoose = require('mongoose');
 
 const CategorySchema = new mongoose.Schema({
-    cateName: {
-        type: String,
-        required: true,
-        unique: true
+  cateName: {
+    type: String,
+    required: true,
+  },
+  cateDescription: {
+    type: String,
+  },
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product',
     },
-    cateDescription: {
-        type: String
-    },
-    products: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product'
-    }],
-    date: {
-        type: Date,
-        default: Date.now
-    }
-})
+  ],
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
 module.exports = Category = mongoose.model('Category', CategorySchema);

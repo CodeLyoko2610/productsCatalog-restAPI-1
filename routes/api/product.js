@@ -66,7 +66,7 @@ router.post(
             res.send('New product created. ' + newProduct);
         } catch (error) {
             res.status(500).send('Server error.');
-            console.error(error.message);
+            console.error('[product.js] ' + error.message);
         }
     }
 );
@@ -79,7 +79,7 @@ router.get('/:productId', async (req, res) => {
             .findOne({
                 _id: req.params.productId
             })
-        // .populate('Category', ['name', 'description']);
+        // .populate('Category', ['cateName', 'cateDescription']);
 
         if (!product) {
             return res.status(400).send('Product not found.');

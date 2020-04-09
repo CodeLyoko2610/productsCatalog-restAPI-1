@@ -60,5 +60,25 @@ router.post('/', [
     }
 })
 
+//@route    GET api/category/:categoryId
+//@desc     Check 1 category
+router.get('/:categoryId', async (req, res) => {
+    try {
+        let category = await Category
+            .findOne({
+                _id: req.params.categoryId
+            })
+        // .populate('Product', ['prodName', 'prodDescription']);
+
+        if (!category) {
+            return res.status(400).send('Category not found.');
+        }
+
+        res.json(category);
+    } catch (error) {
+        res.status(500).send('Server error.');
+        console.error('[category.js] ' + error.message);
+    }
+})
 
 module.exports = router;
