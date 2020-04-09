@@ -35,13 +35,14 @@ _Request header_
 
 _Request body_
 
-````{
+```{
 	"cateName":"Cate1",
 	"cateDescription":"Test Category 1"
 }```
-````
+```
 
 ### Search for a product with productId
 
 _GET request_
+
 `http://localhost:6000/api/product/5e8ef1a85a906b4643bfdd08`
